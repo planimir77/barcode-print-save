@@ -1,0 +1,9 @@
+.print-none {
+    display: none !important;
+}
+.barcode-image {
+    display: block;
+}
+title {
+    display: none !important;
+}

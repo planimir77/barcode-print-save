@@ -1,0 +1,31 @@
+.barcode-image {
+    display: none;
+    width: 100%;
+}
+.info {
+    
+    font-size:13px; 
+}
+.info img {
+    width: 30px;
+    margin-left: 16px;
+}
+.info a {
+    margin-left: 8px;
+}
+.print-none {
+    font-family: Source Sans Pro, Arial, sans-serif;
+    padding:20px; 
+}
+input {
+    padding: 4px;
+    margin-right: 5px;
+    margin-top: 2px;
+}
+button {
+    border-radius: 3px;
+    background: darkcyan;
+    border: 1px solid darkviolet;
+    color: white;
+    padding: 5px 10px 5px 10px;
+}
