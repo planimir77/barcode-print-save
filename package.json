@@ -1,0 +1,11 @@
+{
+  "name": "print-save-code-128-barcode",
+  "version": "1.0.0",
+  "description": "A page that generates and print(save) larger size code-128 barcodes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "planimir_todorov",
+  "license": ""
+}
