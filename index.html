@@ -5,21 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" media="print" href="print.css" />
-    <title>Document</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <title>Barcode Generator</title>
   </head>
   <body>
-    <div>
+    <div class="barcode">
       <!-- insert your custom barcode setting your data in the GET parameter "data" -->
+      <!-- class="barcode-image" -->
       <img
         class="barcode-image"
         alt="Barcode Generator TEC-IT"
         src="https://barcode.tec-it.com/barcode.ashx?data=ABC-abc-1234&code=&translate-esc=true&imagetype=Svg"
       />
+      <div class="barcode-product-name"></div>
     </div>
     <div class="print-none">
+      <label>Product Name</label>
+      <br />
+      <input class="product-name" placeholder="Enter the Product Name" type="text">
+      <br />
       <label>Barcode Code-128</label>
       <br />
-      <input class="input-data" placeholder="Enter the barcode data" type="text" />
+      <input class="barcode-data" placeholder="Enter the Barcode Data" type="text" />
       <button class="add-button">Print | Save</button>
     </div>
     <div class="info print-none">

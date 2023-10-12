@@ -1,5 +1,7 @@
-.barcode-image {
+.barcode {
     display: none;
+}
+.barcode img {
     width: 100%;
 }
 .info {
@@ -16,6 +18,19 @@
 .print-none {
     font-family: Source Sans Pro, Arial, sans-serif;
     padding:20px; 
+}
+.barcode-product-name {
+    text-transform: uppercase;
+    font-family: Source Sans Pro, Arial, sans-serif;
+    font-size: 42px;
+    overflow-wrap: anywhere;
+    margin-top: 100px;
+}
+.product-name {
+    margin-bottom: 15px;
+}
+hr {
+    color: black;
 }
 input {
     padding: 4px;

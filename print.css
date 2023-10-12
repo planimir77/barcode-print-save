@@ -1,7 +1,7 @@
 .print-none {
     display: none !important;
 }
-.barcode-image {
+.barcode {
     display: block;
 }
 title {
