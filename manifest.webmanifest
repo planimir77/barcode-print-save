@@ -2,6 +2,7 @@
   "name": "Code-128 Barcode Generator",
   "short_name": "Barcode Generator",
   "start_url": "/",
+  "scope": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",
