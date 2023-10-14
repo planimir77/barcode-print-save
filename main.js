@@ -7,7 +7,7 @@ const barcodeImage = document.getElementsByClassName("barcode-image")[0];
 
 const btnClick = () => {
     if (!inputBarcodeData.value) {
-        alert('Please enter the barcode dat')
+        alert('Please enter the barcode data')
     } else {
         window.print();
     }
