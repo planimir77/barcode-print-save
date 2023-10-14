@@ -25,6 +25,7 @@
     font-size: 42px;
     overflow-wrap: anywhere;
     margin-top: 100px;
+    text-align: center;
 }
 .product-name {
     margin-bottom: 15px;
