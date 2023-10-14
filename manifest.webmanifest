@@ -1,8 +1,8 @@
 {
   "name": "Barcode Generator",
   "short_name": "Barcode Generator",
-  "start_url": "/",
-  "scope": "/",
+  "description": "A web page that generates and print(save) larger size code-128 barcodes",
+  "start_url": "https://planimir77.github.io/barcode-print-save/",
   "icons": [
     {
       "src": "public/images/android-chrome-192x192.png",
