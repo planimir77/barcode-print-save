@@ -1,47 +1,66 @@
 .barcode {
+  display: none;
+  /* display: block; */
+  padding-top: 8px;
+  border-bottom: 1px dotted lightgray;
+}
+.second-barcode {
+  display: none;
+  /* display: block; */
+  padding-top: 8px;
+}
+.border-bottom {
+    border-bottom: 1px dotted lightgray;
+}
+.d-none {
     display: none;
 }
 .barcode img {
-    width: 100%;
+  width: 100%;
+}
+.second-barcode img {
+  width: 100%;
+}
+.number-of-barcode {
+  width: 79px;
 }
 .info {
-    
-    font-size:13px; 
+  font-size: 13px;
 }
 .info img {
-    width: 30px;
-    margin-left: 16px;
+  width: 30px;
+  margin-left: 16px;
 }
 .info a {
-    margin-left: 8px;
+  margin-left: 8px;
 }
 .print-none {
-    font-family: Source Sans Pro, Arial, sans-serif;
-    padding:20px; 
+  font-family: Source Sans Pro, Arial, sans-serif;
+  padding: 20px;
 }
 .barcode-product-name {
-    text-transform: uppercase;
-    font-family: Source Sans Pro, Arial, sans-serif;
-    font-size: 42px;
-    overflow-wrap: anywhere;
-    margin-top: 100px;
-    text-align: center;
+  text-transform: uppercase;
+  font-family: Source Sans Pro, Arial, sans-serif;
+  font-size: 22px;
+  overflow-wrap: anywhere;
+  margin-top: 100px;
+  text-align: center;
 }
 .product-name {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 hr {
-    color: black;
+  color: black;
 }
 input {
-    padding: 4px;
-    margin-right: 5px;
-    margin-top: 2px;
+  padding: 4px;
+  margin-right: 5px;
+  margin-top: 2px;
 }
 button {
-    border-radius: 3px;
-    background: darkcyan;
-    border: 1px solid darkviolet;
-    color: white;
-    padding: 5px 10px 5px 10px;
+  border-radius: 3px;
+  background: darkcyan;
+  border: 1px solid darkviolet;
+  color: white;
+  padding: 5px 10px 5px 10px;
 }

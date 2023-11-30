@@ -5,32 +5,81 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" media="print" href="print.css" />
-    <link rel="icon" type="image/x-icon" href="public/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="public/images/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="public/images/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="public/images/favicon-16x16.png">
-    <link rel="manifest" crossorigin="use-credentials" href="manifest.webmanifest">
+    <link rel="icon" type="image/x-icon" href="public/favicon.ico" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="public/images/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="public/images/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="public/images/favicon-16x16.png"
+    />
+    <link
+      rel="manifest"
+      crossorigin="use-credentials"
+      href="manifest.webmanifest"
+    />
     <title>Barcode Generator</title>
   </head>
   <body>
-    <div class="barcode">
-      <!-- insert your custom barcode setting your data in the GET parameter "data" -->
-      <!-- class="barcode-image" -->
-      <img
-        class="barcode-image"
-        alt="Barcode Generator TEC-IT"
-        src="https://barcode.tec-it.com/barcode.ashx?data=ABC-abc-1234&code=&translate-esc=true&imagetype=Svg"
-      />
-      <div class="barcode-product-name"></div>
+    <div class="print-area">
+
+      <div class="barcodes">
+        <div class="barcode">
+          <!-- insert your custom barcode setting your data in the GET parameter "data" -->
+          <!-- class="barcode-image" -->
+          <img
+            class="barcode-image"
+            alt="Barcode Generator TEC-IT"
+            src="https://barcode.tec-it.com/barcode.ashx?data=ABC-abc-1234&code=&translate-esc=true&imagetype=Svg"
+          />
+          <div class="barcode-product-name"></div>
+        </div>
+        <div class="second-barcode">
+          <img class="second-barcode-image" src="" />
+        </div>
+      </div>
+      <div class="barcodes-data"></div>
     </div>
+    <!-- Form -->
     <div class="print-none">
       <label>Product Name</label>
       <br />
-      <input class="product-name" placeholder="Enter the Product Name" type="text">
+      <input
+        class="product-name"
+        placeholder="Enter the Product Name"
+        type="text"
+      />
       <br />
       <label>Barcode Code-128</label>
       <br />
-      <input class="barcode-data" placeholder="Enter the Barcode Data" type="text" />
+      <!-- inputBarcodeData -->
+      <input
+        class="barcode-data"
+        placeholder="Enter the Barcode Data"
+        type="text"
+      />
+      <input
+        class="number-of-barcode"
+        placeholder="Number"
+        value="1"
+        type="number"
+      />
+      <br />
+      <input
+        class="second-barcode-data"
+        placeholder="Enter the Second Barcode"
+        type="text"
+      />
       <button class="add-button">Print | Save</button>
     </div>
     <div class="info print-none">

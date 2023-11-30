@@ -4,6 +4,9 @@
 .barcode {
     display: block;
 }
+.second-barcode {
+    display: block;
+}
 title {
     display: none !important;
 }
