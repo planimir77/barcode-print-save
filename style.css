@@ -1,8 +1,10 @@
+body {
+  margin: 0px;
+}
 .barcode {
   display: none;
   /* display: block; */
   padding-top: 8px;
-  border-bottom: 1px dotted lightgray;
 }
 .second-barcode {
   display: none;
@@ -10,7 +12,7 @@
   padding-top: 8px;
 }
 .border-bottom {
-    border-bottom: 1px dotted lightgray;
+    border-bottom: 1px solid lightgray;
 }
 .d-none {
     display: none;
