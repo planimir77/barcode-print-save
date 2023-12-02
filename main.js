@@ -46,7 +46,7 @@ const btnClick = async () => {
     barcodeData.innerHTML = "";
   }
 };
-const addBarcodeData = () => {
+const updateBarcodeData = () => {
 
   moduleWidth = getModuleWidth(
     inputBarcodeData.value.length,
@@ -63,7 +63,7 @@ const addBarcodeData = () => {
   }
 };
 
-const addSecondBarcodeData = () => {
+const updateSecondBarcodeData = () => {
     
   moduleWidth = getModuleWidth(
     inputSecondBarcodeData.value.length,
@@ -87,7 +87,7 @@ const addProductName = () => {
   barcodeProductName.innerText = inputProductName.value;
 };
 
-inputBarcodeData.addEventListener("keyup", addBarcodeData);
-inputSecondBarcodeData.addEventListener("keyup", addSecondBarcodeData);
+inputBarcodeData.addEventListener("keyup", updateBarcodeData);
+inputSecondBarcodeData.addEventListener("keyup", updateSecondBarcodeData);
 inputProductName.addEventListener("keyup", addProductName);
 button.addEventListener("click", btnClick);
