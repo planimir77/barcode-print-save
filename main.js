@@ -1,14 +1,14 @@
 const printSaveButton = document.getElementsByClassName("print-save-button")[0];
 const barcodes = document.getElementsByClassName("barcodes")[0];
-const barcodeData = document.getElementsByClassName("barcodes-data")[0];
-const numberOfBarcodes = document.getElementsByClassName("number-of-barcode")[0];
+const barcodesRepeatData = document.getElementsByClassName("barcodes-repeat")[0];
+const inputNumberOfBarcodes = document.getElementsByClassName("number-of-barcodes")[0];
 const inputBarcodeData = document.getElementsByClassName("barcode-data")[0];
 const inputSecondBarcodeData = document.getElementsByClassName(
   "second-barcode-data"
 )[0];
 
 const sizeDefaultValue = 5;
-const inputBarcodeSize = document.getElementsByClassName("barcode-size")[0];
+const inputBarcodeSize = document.getElementsByClassName("slider-barcode-size")[0];
 inputBarcodeSize.value = sizeDefaultValue;
 
 const secondBarcode = document.getElementsByClassName("second-barcode")[0];
@@ -40,14 +40,7 @@ const printSaveButtonClick = async () => {
   if (!inputBarcodeData.value) {
     alert("Please enter the barcode data");
   } else {
-    for (let index = 0; index < Number(numberOfBarcodes.value) - 1; index++) {
-      let node = barcodes.cloneNode(true);
-      barcodeData.appendChild(node);
-    }
-    await delay(600);
-
     window.print();
-    barcodeData.innerHTML = "";
   }
 };
 const updateBarcodeData = () => {
@@ -65,6 +58,7 @@ const updateBarcodeData = () => {
     const src = `https://barcode.tec-it.com/barcode.ashx?data=${inputBarcodeData.value}&translate-esc=on&unit=Mm&imagetype=Svg&moduleWidth=${moduleWidth}&font=Calibri%2C24%2Cregular`;
     barcodeImage.src = src;
   }
+  updateBarcodesRepeatData();
 };
 
 const updateSecondBarcodeData = () => {
@@ -74,21 +68,23 @@ const updateSecondBarcodeData = () => {
     Number(inputBarcodeSize.value)
   );
 
-  if (!inputSecondBarcodeData.value) {
+  if (!inputSecondBarcodeData.value || inputSecondBarcodeData.value == 'IP-TMP-') {
     secondBarcode.classList.remove("border-bottom");
     secondBarcode.classList.add("d-none");
-    numberOfBarcodes.value = 1;
+    inputNumberOfBarcodes.value = 1;
     secondBarcodeImage.src = "";
   } else {
     secondBarcode.classList.add("border-bottom");
     secondBarcode.classList.remove("d-none");
-    numberOfBarcodes.value = 4;
+    inputNumberOfBarcodes.value = 4;
     secondBarcodeImage.src = `https://barcode.tec-it.com/barcode.ashx?data=${inputSecondBarcodeData.value}&translate-esc=on&unit=Mm&imagetype=Svg&modulewidth=${moduleWidth}&font=Calibri%2C24%2Cregular`;
   }
+  updateBarcodesRepeatData();
 };
 
 const addProductName = () => {
   barcodeProductName.innerText = inputProductName.value;
+  updateBarcodesRepeatData();
 };
 const updateSizeValue = () => {
   if (sizeDefaultValue - Number(inputBarcodeSize.value) == 0) {
@@ -97,6 +93,16 @@ const updateSizeValue = () => {
     sizeValue.innerText = `${(sizeDefaultValue - Number(inputBarcodeSize.value)).toPrecision(2)}`
   }
 };
+const updateBarcodesRepeatData = ()=>{
+  // Clear data
+  barcodesRepeatData.innerHTML = "";
+  // Update data
+  for (let index = 0; index < Number(inputNumberOfBarcodes.value) - 1; index++) {
+    let node = barcodes.cloneNode(true);
+    barcodesRepeatData.appendChild(node);
+  }
+
+}
 const barcodeSizeChange = () => {
   updateSizeValue();
   updateBarcodeData();
@@ -106,5 +112,7 @@ const barcodeSizeChange = () => {
 inputBarcodeData.addEventListener("change", updateBarcodeData);
 inputSecondBarcodeData.addEventListener("change", updateSecondBarcodeData);
 inputProductName.addEventListener("change", addProductName);
-printSaveButton.addEventListener("click", printSaveButtonClick);
 inputBarcodeSize.addEventListener("change", barcodeSizeChange);
+inputNumberOfBarcodes.addEventListener("change", updateBarcodesRepeatData)
+printSaveButton.addEventListener("click", printSaveButtonClick);
+
