@@ -47,47 +47,61 @@
           <img class="second-barcode-image" src="" />
         </div>
       </div>
-      <div class="barcodes-data"></div>
+      <div class="barcodes-repeat"></div>
     </div>
     <!-- Form -->
     <div class="print-none">
       <div>
-        <label>Product Name</label>
+        <label for="product-name">Product Name</label>
         <br />
         <input
+          id="product-name"
           class="product-name"
           placeholder="Enter the Product Name"
           type="text"
         />
       </div>
       <br />
-      <label>Barcode Code-128</label>
+      <label for="barcode-data">Barcode Code-128</label>
       <br />
       <!-- inputBarcodeData -->
       <input
+        id="barcode-data"
         class="barcode-data"
         placeholder="Enter the Barcode Data"
         type="text"
       />
-      <input
-        class="number-of-barcode"
-        placeholder="Number"
-        value="1"
-        type="number"
-      />
       <br />
       <input
+        id="second-barcode-data"
         class="second-barcode-data"
         value="IP-TMP-"
         placeholder="Enter the Second Barcode"
         type="text"
       />
-      <button class="print-save-button">Print | Save</button>
+      <br />
       <p>
-        <label>Size</label>
-        <input class="barcode-size" type="range" min="3" max="7" step="0.2">
-        <label class="size-value">default</label>
+        <label for="slider">Size</label>
+        <input
+          id="slider"
+          class="slider-barcode-size"
+          type="range"
+          min="3"
+          max="7"
+          step="0.2"
+        />
+        <span class="size-value">default</span>
       </p>
+      <label for="number-of-barcodes">Number of copies</label>
+      <br />
+      <input
+        id="number-of-barcodes"
+        class="number-of-barcodes"
+        placeholder="Number"
+        value="1"
+        type="number"
+      />
+      <button class="print-save-button">Print | Save</button>
     </div>
     <div class="info print-none">
       <!-- back-linking to www.tec-it.com is required -->
