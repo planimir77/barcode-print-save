@@ -55,7 +55,7 @@ const updateBarcodeData = () => {
   }
 
   if (inputBarcodeData.value) {
-    const src = `https://barcode.tec-it.com/barcode.ashx?data=${inputBarcodeData.value}&translate-esc=on&unit=Mm&imagetype=Svg&moduleWidth=${moduleWidth}&font=Calibri%2C24%2Cregular`;
+    const src = `https://barcode.tec-it.com/barcode.ashx?data=${inputBarcodeData.value}&translate-esc=on&unit=Mm&imagetype=Svg&moduleWidth=${moduleWidth}&font=Calibri%2C26%2Cbold`;
     barcodeImage.src = src;
   }
   updateBarcodesRepeatData();
@@ -77,7 +77,7 @@ const updateSecondBarcodeData = () => {
     secondBarcode.classList.add("border-bottom");
     secondBarcode.classList.remove("d-none");
     inputNumberOfBarcodes.value = 4;
-    secondBarcodeImage.src = `https://barcode.tec-it.com/barcode.ashx?data=${inputSecondBarcodeData.value}&translate-esc=on&unit=Mm&imagetype=Svg&modulewidth=${moduleWidth}&font=Calibri%2C24%2Cregular`;
+    secondBarcodeImage.src = `https://barcode.tec-it.com/barcode.ashx?data=${inputSecondBarcodeData.value}&translate-esc=on&unit=Mm&imagetype=Svg&modulewidth=${moduleWidth}&font=Calibri%2C26%2Cbold`;
   }
   updateBarcodesRepeatData();
 };
