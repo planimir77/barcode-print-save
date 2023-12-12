@@ -32,7 +32,6 @@
   </head>
   <body>
     <div class="print-area">
-
       <div class="barcodes">
         <div class="barcode">
           <!-- insert your custom barcode setting your data in the GET parameter "data" -->
@@ -52,13 +51,15 @@
     </div>
     <!-- Form -->
     <div class="print-none">
-      <label>Product Name</label>
-      <br />
-      <input
-        class="product-name"
-        placeholder="Enter the Product Name"
-        type="text"
-      />
+      <div>
+        <label>Product Name</label>
+        <br />
+        <input
+          class="product-name"
+          placeholder="Enter the Product Name"
+          type="text"
+        />
+      </div>
       <br />
       <label>Barcode Code-128</label>
       <br />
@@ -81,7 +82,12 @@
         placeholder="Enter the Second Barcode"
         type="text"
       />
-      <button class="add-button">Print | Save</button>
+      <button class="print-save-button">Print | Save</button>
+      <p>
+        <label>Size</label>
+        <input class="barcode-size" type="range" min="3" max="7" step="0.2">
+        <label class="size-value">default</label>
+      </p>
     </div>
     <div class="info print-none">
       <!-- back-linking to www.tec-it.com is required -->

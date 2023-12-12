@@ -1,16 +1,20 @@
-const button = document.getElementsByClassName("add-button")[0];
+const printSaveButton = document.getElementsByClassName("print-save-button")[0];
 const barcodes = document.getElementsByClassName("barcodes")[0];
 const barcodeData = document.getElementsByClassName("barcodes-data")[0];
-const numberOfBarcode = document.getElementsByClassName("number-of-barcode")[0];
+const numberOfBarcodes = document.getElementsByClassName("number-of-barcode")[0];
 const inputBarcodeData = document.getElementsByClassName("barcode-data")[0];
 const inputSecondBarcodeData = document.getElementsByClassName(
   "second-barcode-data"
 )[0];
+
+const sizeDefaultValue = 5;
+const inputBarcodeSize = document.getElementsByClassName("barcode-size")[0];
+inputBarcodeSize.value = sizeDefaultValue;
+
 const secondBarcode = document.getElementsByClassName("second-barcode")[0];
 const inputProductName = document.getElementsByClassName("product-name")[0];
-let factor = 0.86;
+const sizeValue = document.getElementsByClassName("size-value")[0];
 let moduleWidth = 0;
-const barcodeModulewidth = 4.9;
 
 const barcodeProductName = document.getElementsByClassName(
   "barcode-product-name"
@@ -22,21 +26,21 @@ const secondBarcodeImage = document.getElementsByClassName(
 function delay(time) {
   return new Promise((resolve) => setTimeout(resolve, time));
 }
-function getModuleWidth(index, value) {
-    factor = value > 1.3 ? 0.85 : 0.98;
+function getModuleWidth(barcodeLength, barcodeSize) {
 
-  if (index === 0 || index === 1) {
-    return value;
+  const factor = barcodeSize > 1.3 ? 0.86 : 0.98;
+
+  if (barcodeLength === 0 || barcodeLength === 1) {
+    return barcodeSize;
   }
-  index--;
-  return getModuleWidth(index, (value * factor).toFixed(2));
+  barcodeLength--;
+  return getModuleWidth(barcodeLength, (barcodeSize * factor).toFixed(2));
 }
-const btnClick = async () => {
+const printSaveButtonClick = async () => {
   if (!inputBarcodeData.value) {
     alert("Please enter the barcode data");
   } else {
-    
-    for (let index = 0; index < Number(numberOfBarcode.value) - 1; index++) {
+    for (let index = 0; index < Number(numberOfBarcodes.value) - 1; index++) {
       let node = barcodes.cloneNode(true);
       barcodeData.appendChild(node);
     }
@@ -47,10 +51,10 @@ const btnClick = async () => {
   }
 };
 const updateBarcodeData = () => {
-
   moduleWidth = getModuleWidth(
     inputBarcodeData.value.length,
-    barcodeModulewidth
+    // Custom barcode size
+    Number(inputBarcodeSize.value)
   );
 
   if (!inputProductName.value) {
@@ -64,21 +68,21 @@ const updateBarcodeData = () => {
 };
 
 const updateSecondBarcodeData = () => {
-    
   moduleWidth = getModuleWidth(
     inputSecondBarcodeData.value.length,
-    barcodeModulewidth
+    // Custom barcode size
+    Number(inputBarcodeSize.value)
   );
 
   if (!inputSecondBarcodeData.value) {
-    secondBarcode.classList.remove('border-bottom')
-    secondBarcode.classList.add('d-none')
-    numberOfBarcode.value = 1;
+    secondBarcode.classList.remove("border-bottom");
+    secondBarcode.classList.add("d-none");
+    numberOfBarcodes.value = 1;
     secondBarcodeImage.src = "";
   } else {
-    secondBarcode.classList.add('border-bottom')
-    secondBarcode.classList.remove('d-none')
-    numberOfBarcode.value = 4;
+    secondBarcode.classList.add("border-bottom");
+    secondBarcode.classList.remove("d-none");
+    numberOfBarcodes.value = 4;
     secondBarcodeImage.src = `https://barcode.tec-it.com/barcode.ashx?data=${inputSecondBarcodeData.value}&translate-esc=on&unit=Mm&imagetype=Svg&modulewidth=${moduleWidth}&font=Calibri%2C24%2Cregular`;
   }
 };
@@ -86,8 +90,21 @@ const updateSecondBarcodeData = () => {
 const addProductName = () => {
   barcodeProductName.innerText = inputProductName.value;
 };
+const updateSizeValue = () => {
+  if (sizeDefaultValue - Number(inputBarcodeSize.value) == 0) {
+    sizeValue.innerText = 'default'
+  } else {
+    sizeValue.innerText = `${(sizeDefaultValue - Number(inputBarcodeSize.value)).toPrecision(2)}`
+  }
+};
+const barcodeSizeChange = () => {
+  updateSizeValue();
+  updateBarcodeData();
+  updateSecondBarcodeData();
+};
 
-inputBarcodeData.addEventListener("keyup", updateBarcodeData);
-inputSecondBarcodeData.addEventListener("keyup", updateSecondBarcodeData);
-inputProductName.addEventListener("keyup", addProductName);
-button.addEventListener("click", btnClick);
+inputBarcodeData.addEventListener("change", updateBarcodeData);
+inputSecondBarcodeData.addEventListener("change", updateSecondBarcodeData);
+inputProductName.addEventListener("change", addProductName);
+printSaveButton.addEventListener("click", printSaveButtonClick);
+inputBarcodeSize.addEventListener("change", barcodeSizeChange);
