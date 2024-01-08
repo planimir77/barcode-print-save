@@ -1,12 +1,11 @@
 .print-none {
-    display: none !important;
+  display: none !important;
 }
-.barcode {
-    display: block;
-}
+.barcode,
+.barcode-product-name,
 .second-barcode {
-    display: block;
+  display: block;
 }
 title {
-    display: none !important;
+  display: none !important;
 }
