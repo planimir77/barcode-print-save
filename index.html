@@ -30,16 +30,7 @@
     />
     <title class="title">Barcode Generator</title>
   </head>
-  <bod>
-    <div class="print-area">
-      <div class="barcodes">
-        <div class="barcode"></div>
-        <div class="qr-code"></div>
-        <div class="barcode-product-name"></div>
-        <div class="second-barcode"></div>
-      </div>
-      <div class="barcodes-repeat"></div>
-    </div>
+  <body style="overflow: hidden;">
     <!-- Form -->
     <div class="print-none">
       <div>
@@ -114,8 +105,17 @@
         />
       </a>
     </div>
-    <div class="print-none">
-      <a class="link-button" href="print-text.html" role="link"><span class="">Go to the Print-Text Page</span><span style="position: absolute;right: 5px;top: 0px;" class="icon">&#8680;</span></a>
+    <div style="padding-bottom: 300px;" class="print-none">
+      <a class="link-button" href="print-text.html" role="link"><span class="">Go to the Print-Text Page</span><span style="position: absolute;right: 5px;bottom: 1px;" class="icon">&#8680;</span></a>
+    </div>
+    <div class="print-area">
+      <div class="barcodes">
+        <div class="barcode"></div>
+        <div class="qr-code"></div>
+        <div class="barcode-product-name"></div>
+        <div class="second-barcode"></div>
+      </div>
+      <div class="barcodes-repeat"></div>
     </div>
     <div class="spiner d-none print-none">
       <div class="gear" style="width: 400px; height: 400px">

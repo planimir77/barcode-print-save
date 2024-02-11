@@ -9,7 +9,9 @@ const barcodesRepeatData =
   document.getElementsByClassName("barcodes-repeat")[0];
 
 const printSaveButton = document.getElementsByClassName("print-save-button")[0];
-const printQRCodeButton = document.getElementsByClassName("print-qrcode-button")[0];
+const printQRCodeButton = document.getElementsByClassName(
+  "print-qrcode-button"
+)[0];
 
 const inputNumberOfBarcodes =
   document.getElementsByClassName("number-of-barcodes")[0];
@@ -44,11 +46,19 @@ function getModuleWidth(barcodeLength, barcodeSize) {
   barcodeLength--;
   return getModuleWidth(barcodeLength, (barcodeSize * factor).toFixed(2));
 }
+const clearData = () => {
+  qrcode.innerHTML = "";
+  barcode.innerText = "";
+  secondBarcode.innerHTML = "";
+  barcodesRepeatData.innerHTML = "";
+};
 const printSaveButtonClick = async () => {
   if (!inputBarcodeData.value) {
     alert("Please enter the barcode data");
   } else {
   }
+
+  clearData();
   spiner.classList.add("d-block");
   await updateTitle();
   await updateBarcodeData();
@@ -57,35 +67,24 @@ const printSaveButtonClick = async () => {
   setTimeout(() => {
     spiner.classList.remove("d-block");
     window.print();
-    // Clear data
-    barcode.innerText = "";
-    secondBarcode.innerHTML = "";
-    barcodesRepeatData.innerHTML = "";
 
     updateTitle("Barcode Generator");
-
-  }, 2000);
+  }, 1000);
 };
 const printQRCodeButtonClick = async () => {
-  
+
+  clearData();
   spiner.classList.add("d-block");
   await updateTitle();
   await updateQrCodeData();
-  //await updateSecondBarcodeData();
-  //await updateBarcodesRepeatData();
   setTimeout(async () => {
     spiner.classList.remove("d-block");
     window.print();
-    // Clear data
-    qrcode.innerHTML = "";
-    //barcode.innerText = "";
-    //secondBarcode.innerHTML = "";
-    //barcodesRepeatData.innerHTML = "";
 
     await updateTitle("Barcode Generator");
-
-  }, 2000);
+  }, 1000);
 };
+
 const updateTitle = async (value) => {
   title.innerText = value
     ? value
@@ -137,7 +136,7 @@ const updateSecondBarcodeData = async () => {
   if (
     inputSecondBarcodeData.value &&
     inputSecondBarcodeData.value.includes("IP-TMP-") &&
-    inputSecondBarcodeData.value.length > ("IP-TMP-").length
+    inputSecondBarcodeData.value.length > "IP-TMP-".length
   ) {
     // Valid barcode data
     const image = document.createElement("img");
@@ -187,21 +186,17 @@ const updateQrCodeData = async () => {
   }
 
   if (inputBarcodeData.value) {
-    //const barcodes = inputBarcodeData.value.split("\n");
-    const data = inputBarcodeData.value.replaceAll(' ', '+').replaceAll(/(\r\n|\r|\n)/g, '%0a');
+    const data = inputBarcodeData.value
+      .replaceAll(" ", "+")
+      .replaceAll(/(\r\n|\r|\n)/g, "%0a");
 
     const image = document.createElement("img");
     image.src = `https://qrcode.tec-it.com/API/QRCode?data=${data}&backcolor=%23ffffff&size=Large`;
     image.alt = `QR Code`;
-    // width: inherit;
     image.style.width = "500px";
-    image.style.marginTop = "9%"
-    //image.style.paddingBlock = "8px";
-    // if (barcodeData.includes("IP-TMP-", 0)) {
-    //   image.classList.add("border-bottom");
-    // }
+    image.style.marginTop = "9%";
+    image.style.marginBottom = "20px";
     qrcode.appendChild(image);
-   
   }
 };
 
@@ -209,4 +204,4 @@ inputProductName.addEventListener("change", addProductName);
 inputBarcodeSize.addEventListener("change", barcodeSizeChange);
 //inputNumberOfBarcodes.addEventListener("change", updateBarcodesRepeatData);
 printSaveButton.addEventListener("click", printSaveButtonClick);
-printQRCodeButton.addEventListener("click", printQRCodeButtonClick)
+printQRCodeButton.addEventListener("click", printQRCodeButtonClick);

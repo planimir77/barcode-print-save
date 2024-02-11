@@ -2,16 +2,16 @@ body {
   margin: 0px;
 }
 .barcode {
-  display: none;
-  /* display: block; */
+  /* display: none; */
+  display: block;
   padding-top: 8px;
 }
-.qr-code {
+/* .qr-code {
   display: none;
-}
+} */
 .second-barcode {
-  display: none;
-  /* display: block; */
+  /* display: none; */
+  display: block;
   padding-top: 8px;
 }
 .border-bottom {
@@ -28,6 +28,7 @@ body {
 }
 .barcode-data {
   margin-top: 3px;
+  margin-bottom: 8px;
 }
 .second-barcode img {
   width: 100%;
@@ -56,10 +57,10 @@ body {
 .print-none {
   width: 380px;
   font-family: Source Sans Pro, Arial, sans-serif;
-  padding: 20px;
+  padding: 16px;
 }
 .barcode-product-name {
-  display: none;
+  display: block;
   font-family: Source Sans Pro, Arial, sans-serif;
   font-size: 22px;
   overflow-wrap: anywhere;
