@@ -30,15 +30,13 @@
     />
     <title class="title">Barcode Generator</title>
   </head>
-  <body>
+  <bod>
     <div class="print-area">
       <div class="barcodes">
-        <div class="barcode">
-         
-        </div>
+        <div class="barcode"></div>
+        <div class="qr-code"></div>
         <div class="barcode-product-name"></div>
-        <div class="second-barcode">
-        </div>
+        <div class="second-barcode"></div>
       </div>
       <div class="barcodes-repeat"></div>
     </div>
@@ -97,7 +95,8 @@
         value="1"
         type="number"
       />
-      <button class="print-save-button">Print | Save</button>
+      <button class="print-save-button">Print Barcode</button>
+      <button class="print-qrcode-button">Print QR Code</button>
     </div>
     <div class="info print-none">
       <!-- back-linking to www.tec-it.com is required -->
@@ -115,8 +114,11 @@
         />
       </a>
     </div>
+    <div class="print-none">
+      <a class="link-button" href="print-text.html" role="link"><span class="">Go to the Print-Text Page</span><span style="position: absolute;right: 5px;top: 0px;" class="icon">&#8680;</span></a>
+    </div>
     <div class="spiner d-none print-none">
-      <div class="gear " style="width: 400px; height: 400px">
+      <div class="gear" style="width: 400px; height: 400px">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -180,8 +182,6 @@
             </g>
           </g>
         </svg>
-        
-        
       </div>
       <div class="processing">Processing...</div>
     </div>

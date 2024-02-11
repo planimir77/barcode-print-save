@@ -1,10 +1,16 @@
 const title = document.getElementsByClassName("title")[0];
 const spiner = document.getElementsByClassName("spiner")[0];
-const barcode = document.getElementsByClassName("barcode")[0];
+
 const barcodes = document.getElementsByClassName("barcodes")[0];
-const printSaveButton = document.getElementsByClassName("print-save-button")[0];
+const barcode = document.getElementsByClassName("barcode")[0];
+const qrcode = document.getElementsByClassName("qr-code")[0];
+const secondBarcode = document.getElementsByClassName("second-barcode")[0];
 const barcodesRepeatData =
   document.getElementsByClassName("barcodes-repeat")[0];
+
+const printSaveButton = document.getElementsByClassName("print-save-button")[0];
+const printQRCodeButton = document.getElementsByClassName("print-qrcode-button")[0];
+
 const inputNumberOfBarcodes =
   document.getElementsByClassName("number-of-barcodes")[0];
 const inputBarcodeData = document.getElementsByClassName("barcode-data")[0];
@@ -19,7 +25,6 @@ const inputProductName = document.getElementsByClassName("product-name")[0];
 const sizeDefaultValue = 5;
 inputBarcodeSize.value = sizeDefaultValue;
 
-const secondBarcode = document.getElementsByClassName("second-barcode")[0];
 const sizeValue = document.getElementsByClassName("size-value")[0];
 let moduleWidth = 0;
 
@@ -43,23 +48,43 @@ const printSaveButtonClick = async () => {
   if (!inputBarcodeData.value) {
     alert("Please enter the barcode data");
   } else {
-    spiner.classList.add("d-block");
-    await updateTitle();
-    await updateBarcodeData();
-    await updateSecondBarcodeData();
-    await updateBarcodesRepeatData();
-    setTimeout(() => {
-      spiner.classList.remove("d-block");
-      window.print();
-      // Clear data
-      barcode.innerText = "";
-      secondBarcode.innerHTML = "";
-      barcodesRepeatData.innerHTML = "";
-
-      updateTitle("Barcode Generator");
-
-    }, 2000);
   }
+  spiner.classList.add("d-block");
+  await updateTitle();
+  await updateBarcodeData();
+  await updateSecondBarcodeData();
+  await updateBarcodesRepeatData();
+  setTimeout(() => {
+    spiner.classList.remove("d-block");
+    window.print();
+    // Clear data
+    barcode.innerText = "";
+    secondBarcode.innerHTML = "";
+    barcodesRepeatData.innerHTML = "";
+
+    updateTitle("Barcode Generator");
+
+  }, 2000);
+};
+const printQRCodeButtonClick = async () => {
+  
+  spiner.classList.add("d-block");
+  await updateTitle();
+  await updateQrCodeData();
+  //await updateSecondBarcodeData();
+  //await updateBarcodesRepeatData();
+  setTimeout(async () => {
+    spiner.classList.remove("d-block");
+    window.print();
+    // Clear data
+    qrcode.innerHTML = "";
+    //barcode.innerText = "";
+    //secondBarcode.innerHTML = "";
+    //barcodesRepeatData.innerHTML = "";
+
+    await updateTitle("Barcode Generator");
+
+  }, 2000);
 };
 const updateTitle = async (value) => {
   title.innerText = value
@@ -71,6 +96,8 @@ const updateTitle = async (value) => {
         .replaceAll(":", "");
 };
 const updateBarcodeData = async () => {
+  barcode.innerText = "";
+
   if (!inputProductName.value) {
     barcodeProductName.style.marginTop = 0 + "px";
   }
@@ -99,8 +126,10 @@ const updateBarcodeData = async () => {
 };
 
 const updateSecondBarcodeData = async () => {
+  secondBarcode.innerHTML = "";
+
   moduleWidth = getModuleWidth(
-    inputSecondBarcodeData.value.length,
+    inputSecondBarcodeData.value.length + 1,
     // Custom barcode size
     Number(inputBarcodeSize.value)
   );
@@ -134,6 +163,7 @@ const updateSizeValue = () => {
   }
 };
 const updateBarcodesRepeatData = async () => {
+  barcodesRepeatData.innerHTML = "";
   // Update data
   for (
     let index = 0;
@@ -148,7 +178,35 @@ const barcodeSizeChange = () => {
   updateSizeValue();
 };
 
+// QR Codes
+const updateQrCodeData = async () => {
+  qrcode.innerText = "";
+
+  if (!inputProductName.value) {
+    barcodeProductName.style.marginTop = 0 + "px";
+  }
+
+  if (inputBarcodeData.value) {
+    //const barcodes = inputBarcodeData.value.split("\n");
+    const data = inputBarcodeData.value.replaceAll(' ', '+').replaceAll(/(\r\n|\r|\n)/g, '%0a');
+
+    const image = document.createElement("img");
+    image.src = `https://qrcode.tec-it.com/API/QRCode?data=${data}&backcolor=%23ffffff&size=Large`;
+    image.alt = `QR Code`;
+    // width: inherit;
+    image.style.width = "500px";
+    image.style.marginTop = "9%"
+    //image.style.paddingBlock = "8px";
+    // if (barcodeData.includes("IP-TMP-", 0)) {
+    //   image.classList.add("border-bottom");
+    // }
+    qrcode.appendChild(image);
+   
+  }
+};
+
 inputProductName.addEventListener("change", addProductName);
 inputBarcodeSize.addEventListener("change", barcodeSizeChange);
-inputNumberOfBarcodes.addEventListener("change", updateBarcodesRepeatData);
+//inputNumberOfBarcodes.addEventListener("change", updateBarcodesRepeatData);
 printSaveButton.addEventListener("click", printSaveButtonClick);
+printQRCodeButton.addEventListener("click", printQRCodeButtonClick)

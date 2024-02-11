@@ -6,6 +6,10 @@
 .second-barcode {
   display: block;
 }
+.qr-code {
+  display: flex;
+  justify-content: center;
+}
 title {
   display: none !important;
 }
