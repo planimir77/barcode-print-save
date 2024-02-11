@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" media="print" href="print.css" />
+    <title class="title">Text Generator</title>
+  </head>
+  <body style="overflow: hidden">
+    <div class="print-none">
+      <a class="link-button" href="index.html" role="link">
+        <span class="icon">&#8678;</span
+        ><span class="text">Back to the Barcode Page</span></a
+      >
+    </div>
+    <div class="print-none" style="padding-bottom: 300px">
+      <textarea
+        class="text-data"
+        name="text-data"
+        id="text-data"
+        placeholder="Enter text here..."
+        cols="48"
+        rows="10"
+      ></textarea>
+      <div
+        style="
+          display: flex;
+          justify-content: space-around;
+          padding-block: 20px;
+        "
+      >
+        <div style="display: inline-block">
+          <div>
+            <label class="text-size-label" for="text-size">Text Size</label>
+            <br />
+            <input
+              id="text-size"
+              class="text-size"
+              placeholder="Number"
+              min="12"
+              max="300"
+              value="250"
+              type="number"
+            />
+          </div>
+        </div>
+        <div style="display: inline-block">
+          <label class="align-label" for="align-button">align</label>
+          <br />
+          <button id="align-button" class="align-button">center</button>
+        </div>
+        <div style="display: inline-block">
+          <label class="bold-normal-label" for="bold-normal-button">Text</label>
+          <br />
+          <button id="bold-normal-button" class="bold-normal-button">
+            bold
+          </button>
+        </div>
+        <div style="display: inline-block">
+          <button
+            id="align-button"
+            class="center-button"
+          >
+            <img src="public/images/align.png" alt="Justify content center"/>
+          </button>
+        </div>
+      </div>
+      <button class="print-text-button">Print Text</button>
+    </div>
+    <div class="print-area">
+      <div class="text-to-print"></div>
+    </div>
+    <script src="print-text.js"></script>
+  </body>
+</html>

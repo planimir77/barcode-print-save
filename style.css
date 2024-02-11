@@ -6,6 +6,9 @@ body {
   /* display: block; */
   padding-top: 8px;
 }
+.qr-code {
+  display: none;
+}
 .second-barcode {
   display: none;
   /* display: block; */
@@ -57,7 +60,6 @@ body {
 }
 .barcode-product-name {
   display: none;
-  text-transform: uppercase;
   font-family: Source Sans Pro, Arial, sans-serif;
   font-size: 22px;
   overflow-wrap: anywhere;
@@ -76,7 +78,6 @@ input {
   margin-bottom: 2px;
 }
 .print-save-button {
-
   float: right;
 }
 button {
@@ -89,6 +90,29 @@ button {
 }
 button:hover {
   border: 2px solid darkviolet;
+}
+.link-button {
+  background: white;
+  color: darkcyan;
+  padding: 8px 50px 8px 10px;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+}
+.link-button:hover {
+  font-size: 17px;
+  -webkit-transition: 0.4s; /* Safari */
+  transition: 0.4s;
+}
+.link-button .text {
+  position: absolute;
+  top: 7px;
+  left: 44px;
+  width: max-content;
+}
+.link-button .icon {
+  font-size: 28px;
+  font-weight: bold;
 }
 .slider-barcode-size {
   -webkit-appearance: none;
@@ -140,4 +164,62 @@ button:hover {
   overflow-wrap: anywhere;
   text-align: center;
   text-shadow: 0 0 0.2em white;
+}
+/* PRINT TEXT Page */
+.text-to-print {
+  /* Uncomment to see the print area */
+  /* border: 1px solid black; */
+  min-height: 700px;
+  height: auto;
+  font-family: Source Sans Pro, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.center-button {
+  padding-top: 3px;
+  margin-top: 6px;
+  width: 70px;
+  height: 41px;
+  background: darkcyan;
+}
+.bold-normal-button,
+.align-button {
+  text-transform: capitalize;
+  margin-top: 1px;
+  width: 70px;
+}
+.print-text-button {
+  width: -webkit-fill-available;
+  font-size: 18px;
+  padding-block: 7px;
+}
+.text-size-label,
+.orientation-label,
+.align-label,
+.bold-normal-label {
+  font-size: 14px;
+}
+.text-size {
+  width: 60px;
+  margin-right: auto;
+  margin-bottom: 20px;
+  border-radius: 3px;
+  border: 1px solid black;
+  -webkit-transition: 0.2s; /* Safari */
+  transition: 0.2s;
+}
+.text-size,
+.orientation {
+  box-shadow: 0 0 2pt 0.2pt darkcyan;
+  margin-top: 1px;
+}
+.text-size:hover,
+.orientation:hover {
+  box-shadow: 0 0 2pt 0.2pt darkviolet;
+}
+.orientation {
+  border: 1px solid black;
+  width: 93px;
+  padding: 3px 1px 3px 1px;
 }
