@@ -186,6 +186,7 @@ const updateQrCodeData = async () => {
   }
 
   if (inputBarcodeData.value) {
+    const qrCodeSize = ((300 / inputBarcodeSize.value) * 5).toFixed(0);
     const data = inputBarcodeData.value
       .replaceAll(" ", "+")
       .replaceAll(/(\r\n|\r|\n)/g, "%0a");
@@ -193,9 +194,9 @@ const updateQrCodeData = async () => {
     const image = document.createElement("img");
     image.src = `https://qrcode.tec-it.com/API/QRCode?data=${data}&backcolor=%23ffffff&size=Large`;
     image.alt = `QR Code`;
-    image.style.width = "500px";
-    image.style.marginTop = "9%";
-    image.style.marginBottom = "20px";
+    image.style.width = `${qrCodeSize}px`;
+    // image.style.marginTop = "9%";
+    // image.style.marginBottom = "20px";
     qrcode.appendChild(image);
   }
 };

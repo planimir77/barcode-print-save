@@ -6,9 +6,11 @@ body {
   display: block;
   padding-top: 8px;
 }
-/* .qr-code {
-  display: none;
-} */
+.qr-code {
+  /* width: fit-content; */
+  display: flex;
+  justify-content: center;
+}
 .second-barcode {
   /* display: none; */
   display: block;
