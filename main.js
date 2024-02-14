@@ -107,7 +107,7 @@ const updateBarcodeData = async () => {
     for (const barcodeData of barcodes) {
       if (!barcodeData) continue;
       moduleWidth = getModuleWidth(
-        barcodeData.length,
+        barcodeData.length + 1,
         // Custom barcode size
         Number(inputBarcodeSize.value)
       );
