@@ -14,7 +14,7 @@ body {
 .second-barcode {
   /* display: none; */
   display: block;
-  padding-top: 8px;
+  /* padding-top: 8px; */
 }
 .border-bottom {
   border-bottom: 1px dotted black !important;
@@ -30,7 +30,7 @@ body {
 }
 .barcode-data {
   margin-top: 3px;
-  margin-bottom: 8px;
+  /* margin-bottom: 8px; */
 }
 .second-barcode img {
   width: 100%;

@@ -113,9 +113,9 @@ const updateBarcodeData = async () => {
       );
 
       const image = document.createElement("img");
-      image.src = `https://barcode.tec-it.com/barcode.ashx?data=${barcodeData}&translate-esc=on&unit=Mm&imagetype=Svg&moduleWidth=${moduleWidth}&font=Calibri%2C26%2Cbold`;
+      image.src = `https://barcode.tec-it.com/barcode.ashx?data=${barcodeData}&translate-esc=on&unit=Mm&imagetype=Svg&moduleWidth=${moduleWidth}&font=Calibri%2C30%2Cbold`;
       image.alt = `Barcode ${barcodeData}`;
-      image.style.paddingBlock = "8px";
+      //image.style.paddingBlock = "8px";
       if (barcodeData.includes("IP-TMP-", 0)) {
         image.classList.add("border-bottom");
       }
@@ -140,7 +140,7 @@ const updateSecondBarcodeData = async () => {
   ) {
     // Valid barcode data
     const image = document.createElement("img");
-    image.src = `https://barcode.tec-it.com/barcode.ashx?data=${inputSecondBarcodeData.value}&translate-esc=on&unit=Mm&imagetype=Svg&moduleWidth=${moduleWidth}&font=Calibri%2C26%2Cbold`;
+    image.src = `https://barcode.tec-it.com/barcode.ashx?data=${inputSecondBarcodeData.value}&translate-esc=on&unit=Mm&imagetype=Svg&moduleWidth=${moduleWidth}&font=Calibri%2C28%2Cbold`;
     image.alt = `Barcode ${inputSecondBarcodeData.value}`;
     image.style.paddingBlock = "8px";
     image.classList.add("border-bottom");
@@ -196,7 +196,7 @@ const updateQrCodeData = async () => {
     image.alt = `QR Code`;
     image.style.width = `${qrCodeSize}px`;
     // image.style.marginTop = "9%";
-    // image.style.marginBottom = "20px";
+    image.style.marginBottom = "20px";
     qrcode.appendChild(image);
   }
 };
