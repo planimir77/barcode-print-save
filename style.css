@@ -1,14 +1,17 @@
 body {
   margin: 0px;
+  /* border: 1px solid black; */
 }
 .barcode {
   /* display: none; */
   display: block;
-  padding-top: 8px;
+  /* padding-top: 8px; */
 }
 .qr-code {
   /* width: fit-content; */
-  display: flex;
+  /* display: flex; */
+  display: grid;
+  gap: 1rem;
   justify-content: center;
 }
 .second-barcode {
@@ -225,4 +228,12 @@ button:hover {
   border: 1px solid black;
   width: 93px;
   padding: 3px 1px 3px 1px;
+}
+.label {
+  display: flex;
+  justify-content: center;
+  margin-block-start: 0.2rem;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: Source Sans Pro, Arial, sans-serif;
 }

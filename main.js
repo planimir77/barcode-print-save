@@ -15,7 +15,7 @@ const printQRCodeButton = document.getElementsByClassName(
 
 const inputNumberOfBarcodes =
   document.getElementsByClassName("number-of-barcodes")[0];
-const inputBarcodeData = document.getElementsByClassName("barcode-data")[0];
+const inputData = document.getElementsByClassName("barcode-data")[0];
 const inputSecondBarcodeData = document.getElementsByClassName(
   "second-barcode-data"
 )[0];
@@ -53,7 +53,7 @@ const clearData = () => {
   barcodesRepeatData.innerHTML = "";
 };
 const printSaveButtonClick = async () => {
-  if (!inputBarcodeData.value) {
+  if (!inputData.value) {
     alert("Please enter the barcode data");
   } else {
   }
@@ -101,25 +101,39 @@ const updateBarcodeData = async () => {
     barcodeProductName.style.marginTop = 0 + "px";
   }
 
-  if (inputBarcodeData.value) {
-    const barcodes = inputBarcodeData.value.split("\n");
+  if (inputData.value) {
+    const rowsData = inputData.value.split("\n");
 
-    for (const barcodeData of barcodes) {
-      if (!barcodeData) continue;
-      moduleWidth = getModuleWidth(
-        barcodeData.length + 1,
-        // Custom barcode size
-        Number(inputBarcodeSize.value)
-      );
+    for (const rowData of rowsData) {
+      if (!rowData) continue;
 
-      const image = document.createElement("img");
-      image.src = `https://barcode.tec-it.com/barcode.ashx?data=${barcodeData}&translate-esc=on&unit=Mm&imagetype=Svg&moduleWidth=${moduleWidth}&font=Calibri%2C30%2Cbold`;
-      image.alt = `Barcode ${barcodeData}`;
-      //image.style.paddingBlock = "8px";
-      if (barcodeData.includes("IP-TMP-", 0)) {
-        image.classList.add("border-bottom");
+      const data = rowData.split(',');
+      for (let index = 0; index < data.length; index++) {
+        if (index > 0) {
+          // Append div
+          const div = document.createElement("div");
+          div.innerText = data[index];
+          div.classList.add('label');
+          barcode.appendChild(div);
+        } else {
+          // Append img
+          moduleWidth = getModuleWidth(
+            data[index].length + 1,
+            // Custom barcode size
+            Number(inputBarcodeSize.value)
+          );
+    
+          const image = document.createElement("img");
+          image.src = `https://barcode.tec-it.com/barcode.ashx?data=${data[index]}&translate-esc=on&unit=Mm&imagetype=Svg&moduleWidth=${moduleWidth}&font=Calibri%2C30%2Cbold`;
+          image.alt = `Barcode ${data[index]}`;
+          if (rowData.includes("IP-TMP-", 0)) {
+            image.classList.add("border-bottom");
+          }
+          barcode.appendChild(image);
+        }
       }
-      barcode.appendChild(image);
+
+
     }
   }
 };
@@ -185,19 +199,41 @@ const updateQrCodeData = async () => {
     barcodeProductName.style.marginTop = 0 + "px";
   }
 
-  if (inputBarcodeData.value) {
-    const qrCodeSize = ((300 / inputBarcodeSize.value) * 5).toFixed(0);
-    const data = inputBarcodeData.value
-      .replaceAll(" ", "+")
-      .replaceAll(/(\r\n|\r|\n)/g, "%0a");
-
-    const image = document.createElement("img");
-    image.src = `https://qrcode.tec-it.com/API/QRCode?data=${data}&backcolor=%23ffffff&size=Large`;
-    image.alt = `QR Code`;
-    image.style.width = `${qrCodeSize}px`;
-    // image.style.marginTop = "9%";
-    image.style.marginBottom = "20px";
-    qrcode.appendChild(image);
+  if (inputData.value) {
+    const rowsData = inputData.value.split("\n");
+    for (const rowData of rowsData) {
+      if (!rowData) continue;
+      const qrData = rowData.split(',');
+      
+      // add img
+      const imgContainer = document.createElement("div");
+      //imgContainer.style.display = "table";
+      imgContainer.style.pageBreakInside="avoid";
+      const qrCodeSize = ((200 / inputBarcodeSize.value) * 5).toFixed(0);
+      const data = qrData[0]
+        .replaceAll(" ", "+")
+        .replaceAll(/(\r\n|\r|\n)/g, "%0a");
+  
+      const image = document.createElement("img");
+      //image.src = "public/images/QRCode1.png";
+      image.src = `https://qrcode.tec-it.com/API/QRCode?data=${data}&backcolor=%23ffffff&size=Large`;
+      image.alt = `QR Code`;
+      image.style.display = 'block';
+      image.style.width = `${qrCodeSize}px`;
+      image.style.height = `${qrCodeSize}px`;
+      image.style.marginLeft = "auto";
+      image.style.marginRight = "auto";
+      imgContainer.appendChild(image);
+      
+      for (let i = 1; i < qrData.length; i++) {
+        // add div
+        const div = document.createElement("div");
+        div.innerText = qrData[i];
+        div.classList.add('label');
+        imgContainer.appendChild(div);
+      }
+      qrcode.appendChild(imgContainer);
+    }
   }
 };
 
