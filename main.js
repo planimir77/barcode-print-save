@@ -124,7 +124,7 @@ const updateBarcodeData = async () => {
           );
     
           const image = document.createElement("img");
-          image.src = `https://barcode.tec-it.com/barcode.ashx?data=${data[index]}&translate-esc=on&unit=Mm&imagetype=Svg&moduleWidth=${moduleWidth}&font=Calibri%2C30%2Cbold`;
+          image.src = `https://barcode.tec-it.com/barcode.ashx?data=${data[index]}&translate-esc=on&unit=Mm&imagetype=https://barcode.tec-it.com/barcode.ashx?data=ABC-abc-1234gff&code=Code128&translate-esc=on&imagetype=Jpg&moduleWidth=${moduleWidth}&font=Calibri%2C30%2Cbold`;
           image.alt = `Barcode ${data[index]}`;
           if (rowData.includes("IP-TMP-", 0)) {
             image.classList.add("border-bottom");
